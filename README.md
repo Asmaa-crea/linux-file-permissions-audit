@@ -53,7 +53,7 @@ During the audit, `project_k.txt` was flagged as a critical vulnerability becaus
 
 To fix this and ensure that "Other" users do not have write access, I executed the following command:
 
-```bash
+bash
 chmod o-w project_k.txt
 Explanation: The chmod command changes file permissions. The o-w flag explicitly removes (-) write access (w) from the "Other" (o) category, while leaving the User and Group permissions intact.
 
