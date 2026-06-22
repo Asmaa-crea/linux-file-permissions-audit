@@ -11,6 +11,9 @@ To investigate the current access controls, I navigated to the `/home/researcher
 
 ```bash
 ls -la
+<img width="781" height="271" alt="image" src="https://github.com/user-attachments/assets/38a58c20-6bb4-4618-9bd5-883c6e35cae6" />
+
+
 
 Current File Permissions (Audit Results)
 Based on the output of the command, the filesystem structure and permissions were as follows:
@@ -52,6 +55,12 @@ To fix this and ensure that "Other" users do not have write access, I executed t
 chmod o-w project_k.txt
 Explanation: The chmod command changes file permissions. The o-w flag explicitly removes (-) write access (w) from the "Other" (o) category, while leaving the User and Group permissions intact.
 
+The following code demonstrates how I used Linux commands to do this:
+
+<img width="794" height="281" alt="image" src="https://github.com/user-attachments/assets/d968143e-d013-40d6-82e1-3c592b1ac1ca" />
+
+The first two lines of the screenshot display the commands I entered, and the other lines display the output of the second command. The chmod command changes the permissions on files and directories. The first argument indicates what permissions should be changed, and the second argument specifies the file or directory. In this example, I removed write permissions from other for the project_k.txt file. After this, I used ls -la to review the updates I made.
+
 Change File Permissions on a Hidden File
 The research team archived a hidden file named .project_x.txt. The organization's policy dictates that this archived file must not have write permissions for anyone, but both the User (owner) and the Group should retain read access.
 
@@ -60,11 +69,21 @@ chmod u-w,g-w,g+r .project_x.txt
 
 Explanation: This command removes write permissions (-w) from both the User (u) and the Group (g), and explicitly ensures the Group has read access (g+r). This successfully locks down the archived file from accidental modifications while keeping it readable for authorized team members.
 
+The following code demonstrates how I used Linux commands to change the permissions:
+
+<img width="807" height="280" alt="image" src="https://github.com/user-attachments/assets/13a985ee-2343-48b8-b492-3f284b8bfad5" />
+
+
 Change Directory Permissions
 The drafts subdirectory contains sensitive, non-public research. According to the security briefs, only the primary researcher (researcher2) should have access to this directory and its contents. Group and Other users must have all access revoked.
 
 To secure the directory, I used the following command:
 chmod g-x,o= drafts
+
+The following code demonstrates how I used Linux commands to change the permissions:
+
+<img width="796" height="294" alt="image" src="https://github.com/user-attachments/assets/4965b09e-aafa-43e1-8811-334a75d036e9" />
+
 Explanation: This command removes execute permissions from the Group (g-x) and completely strips all permissions from Other (o=), ensuring that only researcher2 (who holds rwx) can access, view, or execute scripts inside the drafts folder.
 
 ---
