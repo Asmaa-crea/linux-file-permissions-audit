@@ -66,3 +66,10 @@ The drafts subdirectory contains sensitive, non-public research. According to th
 To secure the directory, I used the following command:
 chmod g-x,o= drafts
 Explanation: This command removes execute permissions from the Group (g-x) and completely strips all permissions from Other (o=), ensuring that only researcher2 (who holds rwx) can access, view, or execute scripts inside the drafts folder.
+
+---
+
+## Summary
+Through this security audit, I successfully analyzed and remediated the file system permissions within the `/home/researcher2/projects` directory. By interpreting the 10-character Linux permission strings, I identified multiple compliance violations that compromised the integrity of the research team's data. 
+
+Using targeted `chmod` commands, I eliminated unauthorized write access on standard files, secured archived hidden files, and completely isolated the sensitive `drafts` subdirectory to restrict access exclusively to `researcher2`. This practical exercise reinforces the importance of the Principle of Least Privilege and demonstrates a strong proficiency in utilizing Linux command-line tools to enforce organization-wide security policies.
