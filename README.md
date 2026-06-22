@@ -9,8 +9,9 @@ The organization maintains a strict security policy stating that **"Other" users
 ## Check File and Directory Details
 To investigate the current access controls, I navigated to the `/home/researcher2/projects` directory and listed all contents, including hidden files, using the following Linux command:
 
-```bash
+bash
 ls -la
+
 
 <img width="781" height="271" alt="image" src="https://github.com/user-attachments/assets/38a58c20-6bb4-4618-9bd5-883c6e35cae6" />
 
