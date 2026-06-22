@@ -40,3 +40,29 @@ Characters 8–10 (Other): Controls the read (r), write (w), and execute (x) per
 
 Example Analysis from Audit:
 For project_k.txt, the string is -rwxrwxrwx. This means it is a regular file where the User, Group, and Everyone else ("Other") all have full Read, Write, and Execute permissions. This severely violates our security policy.
+
+---
+
+## Change File Permissions
+During the audit, `project_k.txt` was flagged as a critical vulnerability because it allowed full write access to "Other" users (`-rwxrwxrwx`), which directly violates the organization's security policy. 
+
+To fix this and ensure that "Other" users do not have write access, I executed the following command:
+
+```bash
+chmod o-w project_k.txt
+Explanation: The chmod command changes file permissions. The o-w flag explicitly removes (-) write access (w) from the "Other" (o) category, while leaving the User and Group permissions intact.
+
+Change File Permissions on a Hidden File
+The research team archived a hidden file named .project_x.txt. The organization's policy dictates that this archived file must not have write permissions for anyone, but both the User (owner) and the Group should retain read access.
+
+To restrict write access and set the correct permissions, I ran:
+chmod u-w,g-w,g+r .project_x.txt
+
+Explanation: This command removes write permissions (-w) from both the User (u) and the Group (g), and explicitly ensures the Group has read access (g+r). This successfully locks down the archived file from accidental modifications while keeping it readable for authorized team members.
+
+Change Directory Permissions
+The drafts subdirectory contains sensitive, non-public research. According to the security briefs, only the primary researcher (researcher2) should have access to this directory and its contents. Group and Other users must have all access revoked.
+
+To secure the directory, I used the following command:
+chmod g-x,o= drafts
+Explanation: This command removes execute permissions from the Group (g-x) and completely strips all permissions from Other (o=), ensuring that only researcher2 (who holds rwx) can access, view, or execute scripts inside the drafts folder.
