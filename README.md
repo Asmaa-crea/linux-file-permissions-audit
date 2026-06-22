@@ -11,6 +11,7 @@ To investigate the current access controls, I navigated to the `/home/researcher
 
 ```bash
 ls -la
+
 <img width="781" height="271" alt="image" src="https://github.com/user-attachments/assets/38a58c20-6bb4-4618-9bd5-883c6e35cae6" />
 
 
